@@ -36,13 +36,40 @@ export default class App extends React.Component {
   }
 // delete and add show methods 
   deleteShow(e, watchlist, show){
+    e.preventDefault();
     const index = watchlist.shows.indexOf(show);
     watchlist.shows.splice(index, 1);
-    updateWatchlist(watchlist);
+    updateWatchlist(watchlist)
+      .then(()=> {
+        this.setState(state => {
+          for (let w of state.watchlists) {
+            if (w.id === watchlist.id) {
+              w = watchlist;
+              break;
+            }
+          }
+          console.log('Updated Watchlists:', w)
+          return state;
+        });
+      });
   }
 
-  addShow(){
-
+  addShow(e, watchlist, show){
+    watchlist.shows.push(show);
+    updateWatchlist(watchlist)
+      .then(()=> {
+        this.setState(state => {
+          for (let w of state.watchlists) {
+            if (w.id === watchlist.id) {
+              w = watchlist;
+              break;
+            }
+          }
+          console.log('Updated Watchlists:', w)
+          return state;
+        });
+      });
+      e.preventDefault();
   }
 
 }
@@ -55,6 +82,6 @@ function updateWatchlist(watchlist) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(show)
+    body: JSON.stringify(watchlist)
     });
 }
