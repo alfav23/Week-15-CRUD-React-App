@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Watchlist from './components/watchlist';
+import watchlistArray from '../db.json';
 
 const URL  = "";
 
@@ -10,14 +11,15 @@ export default class App extends React.Component {
     super(props);
     this.addShow = this.addShow.bind(this);
     this.deleteShow = this.deleteShow.bind(this);
+    this.getRandomInt = this.getRandomInt.bind(this);
   }
 
   render() {
     return (
       <div className="App">
         {/* map watchlist list into watchlist component*/}
-        {watchlistList.map((watchlist,index) => (
-          <Watchlist key = {index} watchlists = {watchlist} addShow = {this.addShow} deleteShow = {this.deleteShow}/>
+        {watchlistArray.map((watchlist,index) => (
+          <Watchlist key = {index} watchlists = {watchlist} addShow = {this.addShow} deleteShow = {this.deleteShow} createId = {this.getRandomInt}/>
         ))}
       </div>
     );
@@ -34,7 +36,7 @@ export default class App extends React.Component {
       });
     });
   }
-// delete and add show methods 
+// delete show method using index and splice
   deleteShow(e, watchlist, show){
     e.preventDefault();
     const index = watchlist.shows.indexOf(show);
@@ -54,6 +56,7 @@ export default class App extends React.Component {
       });
   }
 
+  // add show method same as delete, except index not necessary, and push instead of splice
   addShow(e, watchlist, show){
     watchlist.shows.push(show);
     updateWatchlist(watchlist)
@@ -70,6 +73,12 @@ export default class App extends React.Component {
         });
       });
       e.preventDefault();
+  }
+
+  // method to generate random id for shows inside of watchlists
+  // later set shows id property to the call for this method
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 
 }

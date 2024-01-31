@@ -1,0 +1,30 @@
+{
+  "watchlistArray": [
+    {
+      "listName": "Jordan's List",
+      "shows": [
+        {
+          "name": "Love is Blind",
+          "type": "",
+          "streamingService": "",
+          "genre": "",
+          "id": 352
+        }
+      ],
+      "id": 3
+    },
+    {
+      "listName": "Alyssa's Watchlist",
+      "shows": [
+        {
+          "name": "Welcome to Samdalri",
+          "type": "",
+          "streamingService": "",
+          "genre": "",
+          "id": 914
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
