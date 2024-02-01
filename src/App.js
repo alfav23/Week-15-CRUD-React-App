@@ -9,6 +9,6 @@ export default class App extends React.Component {
       <div>
         <WatchlistArray/>
       </div>
-    )
+    );
   }
 }

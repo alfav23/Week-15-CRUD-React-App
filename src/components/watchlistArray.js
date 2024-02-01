@@ -1,6 +1,6 @@
 import React from "react";
 import { Watchlist } from "./watchlist";
-import watchlistApi from "./watchlistApi";
+import { watchlistApi } from "./watchlistApi";
 
 export default class WatchlistArray extends React.Component {
     state = {

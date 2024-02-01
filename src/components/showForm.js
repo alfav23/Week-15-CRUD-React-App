@@ -7,12 +7,12 @@ export const ShowForm = (props) => {
     const [genre, setGenre] = useState('');
 
     const onSubmit = (e) => {
-    e.preventDefault();
-    props.addShow({name, type, streamingService, genre});
-    setName('');
-    setType('');
-    setStreamingService('');
-    setGenre('');
+        e.preventDefault();
+        props.addShow({name, type, streamingService, genre});
+        setName('');
+        setType('');
+        setStreamingService('');
+        setGenre('');
  }
 
  return(
@@ -43,7 +43,7 @@ export const ShowForm = (props) => {
             onChange={(e) => setGenre(e.target.value)}
             value={genre}>
             </input>
-            <button type="submit"> Add New Show </button>
+            <button onSubmit={onSubmit} type="submit"> Add New Show </button>
         </form>
     </div>
  )

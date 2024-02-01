@@ -1,7 +1,7 @@
 
 const URL = 'http://localhost:3000/watchlistArray';
 
-export default class WatchlistApi {
+class WatchlistApi {
     get = async() => {
         try{
             const resp = await fetch(URL);
@@ -9,7 +9,7 @@ export default class WatchlistApi {
             console.log(data)
             return data;
         } catch(e) {
-            console.log('FAILURE', e);
+            console.log('FAILURE:', e);
         }
     }
 
@@ -24,7 +24,7 @@ export default class WatchlistApi {
             });
             return await resp.json();
         } catch(e) {
-            console.log('FAILURE', e)
+            console.log('FAILURE:', e)
         }
     }
 }
