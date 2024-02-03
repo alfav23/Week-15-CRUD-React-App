@@ -1,39 +1,42 @@
 import React from "react";
-import { Watchlist } from "./watchlist";
-import { watchlistApi } from "./watchlistApi";
+import Watchlist from "./watchlist";
+import { WatchlistApi } from "./watchlistApi";
 
 export default class WatchlistArray extends React.Component {
-    state = {
-        watchlists: [
-
-        ]
-    };
+    constructor(){
+        super();
+        // original state
+        this.state = {
+            watchlists: []
+        };
+}
 
     componentDidMount() {
         this.fetchWatchlists();
     }
 
     fetchWatchlists = async () => {
-        const watchlists = await watchlistApi.get();
-        this.setState = watchlists
-        // values that come back from api
+        const watchlists = await WatchlistApi.get();
+        console.log(`text:`, watchlists);
+        // setting state to values that come back from api
+        this.setState({watchlists});
+        
     }
 
     updateWatchlist = async(updatedWatchlist) => {
-        await watchlistApi.get(updatedWatchlist);
+        await WatchlistApi.get(updatedWatchlist);
         this.fetchWatchlists();
     }
 
     render(){
+        console.log(`Rendering jsx:`, this.state)
         return(
-            <div className="watchlist-array">
-                {this.state.watchlists.map((watchlist) => (
-                    <Watchlist 
-                        key={watchlist.id} 
-                        watchlist = {watchlist} 
-                        updateWatchlist={this.updateWatchlist}
-               />
-                ))}
+            <div className="watchlist-array text-white">
+                {this.state.watchlists.map((watchlist, index) => {
+                return(
+                    <Watchlist key={index} watchlist = {watchlist} />
+                )}
+                )}
                </div> 
         )
     }

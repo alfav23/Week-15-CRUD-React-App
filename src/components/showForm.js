@@ -16,7 +16,7 @@ export const ShowForm = (props) => {
  }
 
  return(
-    <div>
+    <div className="card card-dark border-white">
         <h4>New Show</h4>
         <form>
             <input

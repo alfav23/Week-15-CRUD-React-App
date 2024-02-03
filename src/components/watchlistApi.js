@@ -1,12 +1,12 @@
 
 const URL = 'http://localhost:3000/watchlistArray';
 
-class WatchlistApi {
+class WatchlistArrayApi {
     get = async() => {
         try{
             const resp = await fetch(URL);
             const data = await resp.json();
-            console.log(data)
+            console.log(`Get request: data:`, data)
             return data;
         } catch(e) {
             console.log('FAILURE:', e);
@@ -29,4 +29,4 @@ class WatchlistApi {
     }
 }
 
-export const watchlistApi = new WatchlistApi();
+export const WatchlistApi = new WatchlistArrayApi();

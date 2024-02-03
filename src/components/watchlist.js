@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShowForm } from './showForm';
 
-export const Watchlist = (props) => {
+export default function Watchlist(props) {
     const { watchlist, updateWatchlist} = props;
 
     const deleteShow = (showId) => {
@@ -15,20 +15,22 @@ export const Watchlist = (props) => {
     const addShow = (show) => updateWatchlist({...watchlist, shows: [...watchlist.shows, show]});
 
     const shows = () => {
-        <ul>
+        <ul> sdfjhdfhdsd
             {watchlist.shows.map((show, index) => {
+                return(
                 <li key={index}>
                     <label> {`${show.name} Type: ${show.type} Streaming Service: ${show.streamingService} Genre: ${show.genre}`} </label>
                     <button onClick={(e) => deleteShow(show.id)}>
                         Delete Show
                     </button>
                 </li>
-            })}
+            )}
+            )}
         </ul>
     };
 
     return(
-        <div>
+        <div className='text-white'>
             <h1>{watchlist.listName}</h1>
             {shows({shows, watchlistId: watchlist.id, deleteShow})}
             <ShowForm addShow={addShow}/>
