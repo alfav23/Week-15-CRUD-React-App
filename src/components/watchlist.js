@@ -2,11 +2,12 @@ import React from 'react';
 import { ShowForm } from './showForm';
 
 export default function Watchlist(props) {
-    // update watchlist function is not contained in props object, not being recognized when called
+    // update watchlist function is not contained in props object, not being recognized when called ⛔
     console.log(`These are the props`, props)
     const { watchlist, updateWatchlist } = props;
 
     const deleteShow = (showId) => {
+        // creating an updated copy of watchlist which copies watchlist object and filters out the corresponding show by id from shows property within watchlist
         const updatedWatchlist = {
             ...watchlist,
             shows: watchlist.shows.filter((x) => x.id !== showId)
