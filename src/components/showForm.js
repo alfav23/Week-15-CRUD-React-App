@@ -16,9 +16,10 @@ export const ShowForm = (props) => {
  }
 
  return(
-    <div className="card card-dark border-white">
+    <div className="card border border-secondary">
+        <div className="card-body">
         <h4>New Show</h4>
-        <form>
+        <form className="show-form">
             <input
             type="text"
             placeholder="Enter new show/movie name..."
@@ -43,8 +44,9 @@ export const ShowForm = (props) => {
             onChange={(e) => setGenre(e.target.value)}
             value={genre}>
             </input>
-            <button onSubmit={onSubmit} type="submit"> Add New Show </button>
+            <button className='btn btn-success' onSubmit={onSubmit} type="submit"> Add New Show </button>
         </form>
+        </div>
     </div>
  )
 }

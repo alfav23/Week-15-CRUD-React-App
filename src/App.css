@@ -1,7 +1,21 @@
 /* my css */
-h4 {
-  color: white;
+.card {
+  margin: 2rem;
 }
+
+ul{
+  list-style-type: none;
+}
+
+li {
+  color: rgb(211, 62, 62);
+}
+
+input {
+  border-radius: 5px;
+}
+
+
 
 /* existing react css */
 .App {

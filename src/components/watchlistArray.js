@@ -3,8 +3,8 @@ import Watchlist from "./watchlist";
 import { WatchlistApi } from "./watchlistApi";
 
 export default class WatchlistArray extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         // original state
         this.state = {
             watchlists: []

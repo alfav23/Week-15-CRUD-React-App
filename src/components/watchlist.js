@@ -2,37 +2,43 @@ import React from 'react';
 import { ShowForm } from './showForm';
 
 export default function Watchlist(props) {
-    const { watchlist, updateWatchlist} = props;
+    // update watchlist function is not contained in props object, not being recognized when called
+    console.log(`These are the props`, props)
+    const { watchlist, updateWatchlist } = props;
 
     const deleteShow = (showId) => {
         const updatedWatchlist = {
             ...watchlist,
             shows: watchlist.shows.filter((x) => x.id !== showId)
         };
+        console.log(updatedWatchlist)
         updateWatchlist(updatedWatchlist);
     }
 
     const addShow = (show) => updateWatchlist({...watchlist, shows: [...watchlist.shows, show]});
 
-    const shows = () => {
-        <ul> sdfjhdfhdsd
-            {watchlist.shows.map((show, index) => {
-                return(
-                <li key={index}>
-                    <label> {`${show.name} Type: ${show.type} Streaming Service: ${show.streamingService} Genre: ${show.genre}`} </label>
+    const renderShows = () => {
+        return(
+        <ul>
+            {watchlist.shows.map((show, index) => (
+                <ul key={index}> <h4>{`${show.name}`}</h4>
+                     <li>{` Type: ${show.type}`}</li>
+                     <li>{`Streaming Service: ${show.streamingService}`}</li> 
+                     <li>{`Genre: ${show.genre}`} </li>
                     <button onClick={(e) => deleteShow(show.id)}>
                         Delete Show
                     </button>
-                </li>
-            )}
+                </ul>
+            )
             )}
         </ul>
-    };
+    )};
+    
 
     return(
-        <div className='text-white'>
-            <h1>{watchlist.listName}</h1>
-            {shows({shows, watchlistId: watchlist.id, deleteShow})}
+        <div className='card bg-dark text-white'>
+            <h1 className='text-white'>{watchlist.listName}</h1>
+            Shows: {renderShows()}
             <ShowForm addShow={addShow}/>
         </div>
     )

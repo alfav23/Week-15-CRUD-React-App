@@ -5,9 +5,9 @@
       "shows": [
         {
           "name": "Love is Blind",
-          "type": "",
-          "streamingService": "",
-          "genre": "",
+          "type": "Show",
+          "streamingService": "Netflix",
+          "genre": "Reality",
           "id": 352
         }
       ],
