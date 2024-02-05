@@ -22,6 +22,7 @@ export default class WatchlistArray extends React.Component {
         console.log(`text:`, watchlists);
         // setting state to values that come back from api
         this.setState({watchlists});
+        return watchlists;
         
     }
 
@@ -31,19 +32,18 @@ export default class WatchlistArray extends React.Component {
         this.fetchWatchlists();
     }
 
-    addWatchlist = async() => {
-        console.log(`Adding a watchlist:`, this.state)
-        this.updateWatchlist();
-        // sets state to values that come back from api 
+    addWatchlist = async(newWatchlist) => {
+        console.log(`Adding a watchlist:`, newWatchlist)
+        await WatchlistApi.post(newWatchlist)
         this.fetchWatchlists();
     }
 
     deleteWatchlist = async (watchlistId) => {
+        console.log(`Watchlist id:`, watchlistId);
         // deleting watchlist by id
-        let watchlists = this.fetchWatchlists();
-        watchlists.filter((x) => x.id !== watchlistId)
-        this.updatedWatchlist();
-        console.log(`updated watchlist:`, this.state)
+        await WatchlistApi.delete(watchlistId);
+        this.fetchWatchlists();
+
     }
 
     render(){

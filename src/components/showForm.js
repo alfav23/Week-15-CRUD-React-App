@@ -1,15 +1,21 @@
 import React, {useState} from "react";
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 export const ShowForm = (props) => {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [streamingService, setStreamingService] = useState('');
     const [genre, setGenre] = useState('');
+    const id = getRandomInt(10000);
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log({name})
-        props.addShow({name, type, streamingService, genre});
+        console.log(name, type, streamingService, genre, id)
+        props.addShow(name, type, streamingService, genre, id);
+        // reset inputs to empty
         setName('');
         setType('');
         setStreamingService('');
@@ -53,7 +59,7 @@ export const ShowForm = (props) => {
                         value={genre}>
                         </input>
                         <br></br>
-                <button className='btn btn-success' onSubmit={onSubmit} type="submit"> Add New Show </button>
+                <button className='btn btn-success' onClick={onSubmit}> Add New Show </button>
             </form>
         </div>
     </div>

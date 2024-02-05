@@ -7,8 +7,10 @@ export default function WatchlistForm(props) {
 
     // on submit function to 
     function onSubmit(e){
+        console.log(`data submitted`)
         e.preventDefault();
-        props.addWatchlist({listName});
+        console.log(listName);
+        props.addWatchlist({listName, shows:[]});
 
     }
     return(
@@ -18,7 +20,7 @@ export default function WatchlistForm(props) {
                 <input placeholder="Enter new watchlist name..." onChange={(e) => setListName(e.target.value)}
                         value={listName}>
                 </input>
-                <button className="btn btn-outline-success ms-2" onSubmit = {onSubmit}> Create New Watchlist </button>
+                <button className="btn btn-outline-success ms-2" onClick = {onSubmit}> Create New Watchlist </button>
             </form>
         </div>
     )

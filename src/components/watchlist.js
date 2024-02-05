@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShowForm } from './showForm';
 
-export default function Watchlist(props) {
-    const { watchlist, updateWatchlist, deleteWatchlist } = props;
+export default function Watchlist({ watchlist, updateWatchlist, deleteWatchlist }) {
+    // const { watchlist, updateWatchlist, deleteWatchlist } = props;
 
 
     const deleteShow = (showId) => {
@@ -15,12 +15,11 @@ export default function Watchlist(props) {
         updateWatchlist(updatedWatchlist);
     }
 
-    const addShow = (show) => {
+    const addShow = (name, type, streamingService, genre, id) => {
         const updatedWatchlist = {
-            ...watchlist, shows: [...watchlist.id.shows.push(show)]
-            // ...watchlist, shows: [...watchlist.shows, show]
+            ...watchlist, shows: [...watchlist.shows, {name: name, type: type, streamingService: streamingService, genre: genre, id: id}]
         };
-        console.log(`This is the updated watchlist after adding a show:`, updatedWatchlist)
+        console.log(`new show:`, name)
         updateWatchlist(updatedWatchlist);
     }
 
