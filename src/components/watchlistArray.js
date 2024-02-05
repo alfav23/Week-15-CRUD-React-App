@@ -38,6 +38,14 @@ export default class WatchlistArray extends React.Component {
         this.fetchWatchlists();
     }
 
+    deleteWatchlist = async (watchlistId) => {
+        // deleting watchlist by id
+        let watchlists = this.fetchWatchlists();
+        watchlists.filter((x) => x.id !== watchlistId)
+        this.updatedWatchlist();
+        console.log(`updated watchlist:`, this.state)
+    }
+
     render(){
         console.log(`Rendering jsx:`, this.state)
         return(
@@ -46,7 +54,7 @@ export default class WatchlistArray extends React.Component {
                 <WatchlistForm addWatchlist = {this.addWatchlist} />
                 {this.state.watchlists.map((watchlist, index) => {
                 return(
-                    <Watchlist key={index} watchlist = {watchlist} updateWatchlist = {this.updateWatchlist}/>
+                    <Watchlist key={index} watchlist = {watchlist} updateWatchlist = {this.updateWatchlist} deleteWatchlist={this.deleteWatchlist}/>
                 )}
                 )}
                </div> 

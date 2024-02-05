@@ -2,16 +2,8 @@ import React from 'react';
 import { ShowForm } from './showForm';
 
 export default function Watchlist(props) {
-    const { watchlist, updateWatchlist } = props;
+    const { watchlist, updateWatchlist, deleteWatchlist } = props;
 
-    const deleteWatchlist = (watchlistId) => {
-        // deleting watchlist by id
-        const updatedWatchlist = {
-            watchlists: watchlist.filter((x) => x.id !== watchlistId)
-        };
-        console.log(`updated watchlist:`, watchlist)
-        updateWatchlist(updatedWatchlist);
-    }
 
     const deleteShow = (showId) => {
         // creating an updated copy of watchlist which copies watchlist object and filters out the corresponding show by id from shows property within watchlist
@@ -58,7 +50,7 @@ export default function Watchlist(props) {
         <div className='card bg-dark text-white border-secondary p-3'>
             <h6 className='text-end'>Watchlist {watchlist.id}</h6>
             <h5 className='card-title text-white'>{watchlist.listName}
-                <button onClick={()=>deleteWatchlist} className='btn btn-outline-danger ms-2'>Delete</button>
+                <button onClick={()=>deleteWatchlist(watchlist.id)} className='btn btn-outline-danger ms-2'>Delete</button>
             </h5>
             {renderShows()}
             <ShowForm addShow={addShow} updateWatchlist = {updateWatchlist} />
