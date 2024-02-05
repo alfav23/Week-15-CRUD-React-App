@@ -2,6 +2,7 @@
 const URL = 'http://localhost:3000/watchlistArray';
 
 class WatchlistArrayApi {
+    // getting the initial watchlists data from api
     get = async() => {
         try{
             const resp = await fetch(URL);
@@ -13,6 +14,7 @@ class WatchlistArrayApi {
         }
     }
 
+    // for update watchlist function
     put = async(watchlistArray) => {
         try{
             const resp = await fetch(`${URL}/${watchlistArray.id}`, {
@@ -28,6 +30,7 @@ class WatchlistArrayApi {
         }
     }
 
+    // delete method to delete watchlists by id takes watchlist id parameter
     delete = async(watchlistId) => {
         try{
             const resp = await fetch(`${URL}/${watchlistId}`, {
@@ -42,6 +45,7 @@ class WatchlistArrayApi {
         }
     }
 
+    // post to update watchlist array with new watchlist
     post = async(newWatchlist) => {
         try{
             const resp = await fetch(`${URL}`, {

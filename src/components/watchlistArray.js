@@ -17,6 +17,7 @@ export default class WatchlistArray extends React.Component {
         this.fetchWatchlists();
     }
 
+    // calling get method to receive data from api and store it in watchlists state object
     fetchWatchlists = async () => {
         const watchlists = await WatchlistApi.get();
         console.log(`text:`, watchlists);
@@ -26,21 +27,23 @@ export default class WatchlistArray extends React.Component {
         
     }
 
+    // method to store changes in a variable and then pass those changes to database
     updateWatchlist = async(updatedWatchlist) => {
-        // accidentally had .get instead of .put to update watchlist
+        // accidentally had .get instead of .put to update watchlist, resolved
         await WatchlistApi.put(updatedWatchlist);
         this.fetchWatchlists();
     }
 
+    // add a new watchlist using post method created in watchlistApi component
     addWatchlist = async(newWatchlist) => {
         console.log(`Adding a watchlist:`, newWatchlist)
         await WatchlistApi.post(newWatchlist)
         this.fetchWatchlists();
     }
 
+    // deleting watchlist by id
     deleteWatchlist = async (watchlistId) => {
         console.log(`Watchlist id:`, watchlistId);
-        // deleting watchlist by id
         await WatchlistApi.delete(watchlistId);
         this.fetchWatchlists();
 
@@ -54,6 +57,7 @@ export default class WatchlistArray extends React.Component {
                 <WatchlistForm addWatchlist = {this.addWatchlist} />
                 {this.state.watchlists.map((watchlist, index) => {
                 return(
+                    // passing all necessary props to Watchlist component
                     <Watchlist key={index} watchlist = {watchlist} updateWatchlist = {this.updateWatchlist} deleteWatchlist={this.deleteWatchlist}/>
                 )}
                 )}

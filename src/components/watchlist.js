@@ -17,12 +17,13 @@ export default function Watchlist({ watchlist, updateWatchlist, deleteWatchlist 
 
     const addShow = (name, type, streamingService, genre, id) => {
         const updatedWatchlist = {
+            // display existing shows on current watchlist and any new shows
             ...watchlist, shows: [...watchlist.shows, {name: name, type: type, streamingService: streamingService, genre: genre, id: id}]
         };
         console.log(`new show:`, name)
         updateWatchlist(updatedWatchlist);
     }
-
+// rendering shows out to take the information input by user
     const renderShows = () => {
         return(
         <ul className='list-group list-group-flush border-dark bg-dark'>
@@ -44,7 +45,7 @@ export default function Watchlist({ watchlist, updateWatchlist, deleteWatchlist 
         </ul>
     )};
     
-
+// rendering out watchlist card to display watchlist info and call render shows and form to add shows
     return(
         <div className='card bg-dark text-white border-secondary p-3'>
             <h6 className='text-end'>Watchlist {watchlist.id}</h6>
@@ -52,6 +53,7 @@ export default function Watchlist({ watchlist, updateWatchlist, deleteWatchlist 
                 <button onClick={()=>deleteWatchlist(watchlist.id)} className='btn btn-outline-danger ms-2'>Delete</button>
             </h5>
             {renderShows()}
+            {/* props to be used in Show Form component */}
             <ShowForm addShow={addShow} updateWatchlist = {updateWatchlist} />
         </div>
     )

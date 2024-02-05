@@ -11,6 +11,7 @@ export default function WatchlistForm(props) {
         e.preventDefault();
         console.log(listName);
         props.addWatchlist({listName, shows:[]});
+        setListName('');
 
     }
     return(

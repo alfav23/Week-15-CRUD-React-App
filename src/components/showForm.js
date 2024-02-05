@@ -1,19 +1,23 @@
 import React, {useState} from "react";
 
+// get random function to populate a random number for show id
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+// use state method to change state of each property in shows object of watchlist
 export const ShowForm = (props) => {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [streamingService, setStreamingService] = useState('');
     const [genre, setGenre] = useState('');
+    // generating random id to later be able to delete new shows by id
     const id = getRandomInt(10000);
 
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(name, type, streamingService, genre, id)
+        // passing values into addShow call for them to be updated and displayed
         props.addShow(name, type, streamingService, genre, id);
         // reset inputs to empty
         setName('');
