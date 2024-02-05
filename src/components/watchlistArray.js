@@ -1,6 +1,8 @@
 import React from "react";
 import Watchlist from "./watchlist";
 import { WatchlistApi } from "./watchlistApi";
+import WatchlistForm from './watchlistForm';
+import NavBar from './navBar';
 
 export default class WatchlistArray extends React.Component {
     constructor(props){
@@ -24,7 +26,15 @@ export default class WatchlistArray extends React.Component {
     }
 
     updateWatchlist = async(updatedWatchlist) => {
-        await WatchlistApi.get(updatedWatchlist);
+        // accidentally had .get instead of .put to update watchlist
+        await WatchlistApi.put(updatedWatchlist);
+        this.fetchWatchlists();
+    }
+
+    addWatchlist = async() => {
+        console.log(`Adding a watchlist:`, this.state)
+        this.updateWatchlist();
+        // sets state to values that come back from api 
         this.fetchWatchlists();
     }
 
@@ -32,9 +42,11 @@ export default class WatchlistArray extends React.Component {
         console.log(`Rendering jsx:`, this.state)
         return(
             <div className="watchlist-array text-white">
+                <NavBar />
+                <WatchlistForm addWatchlist = {this.addWatchlist} />
                 {this.state.watchlists.map((watchlist, index) => {
                 return(
-                    <Watchlist key={index} watchlist = {watchlist} />
+                    <Watchlist key={index} watchlist = {watchlist} updateWatchlist = {this.updateWatchlist}/>
                 )}
                 )}
                </div> 

@@ -9,43 +9,51 @@ export const ShowForm = (props) => {
     const onSubmit = (e) => {
         e.preventDefault();
         props.addShow({name, type, streamingService, genre});
-        setName('');
-        setType('');
-        setStreamingService('');
-        setGenre('');
+        // setName('');
+        // setType('');
+        // setStreamingService('');
+        // setGenre('');
  }
 
  return(
-    <div className="card border border-secondary">
-        <div className="card-body">
-        <h4>New Show</h4>
-        <form className="show-form">
-            <input
-            type="text"
-            placeholder="Enter new show/movie name..."
-            onChange={(e) => setName(e.target.value)}
-            value={name}>
-            </input>
-            <input
-            type="text"
-            placeholder="Enter media type (show, movie, short?)..."
-            onChange={(e) => setType(e.target.value)}
-            value={type}>
-            </input>
-            <input
-            type="text"
-            placeholder="Enter streaming service..."
-            onChange={(e) => setStreamingService(e.target.value)}
-            value={streamingService}>
-            </input>
-            <input
-            type="text"
-            placeholder="Enter genre..."
-            onChange={(e) => setGenre(e.target.value)}
-            value={genre}>
-            </input>
-            <button className='btn btn-success' onSubmit={onSubmit} type="submit"> Add New Show </button>
-        </form>
+    <div className="card bg-dark border border-secondary text-light">
+        <h6 className="card-title text-center p-3"> Create New Show </h6>
+            <div className="card-body">
+                <form className="show-form text-center">
+                    <label> Name </label>
+                        <input
+                        type="text"
+                        placeholder="Enter show/movie name..."
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}>
+                        </input>
+                        <br></br>
+                    <label> Type </label>
+                        <input
+                        type="text"
+                        placeholder="Enter media type..."
+                        onChange={(e) => setType(e.target.value)}
+                        value={type}>
+                        </input>
+                        <br></br>
+                    <label> Streaming Service</label>
+                        <input
+                        type="text"
+                        placeholder="Enter streaming service..."
+                        onChange={(e) => setStreamingService(e.target.value)}
+                        value={streamingService}>
+                        </input>
+                        <br></br>
+                    <label>Genre</label>
+                        <input
+                        type="text"
+                        placeholder="Enter genre..."
+                        onChange={(e) => setGenre(e.target.value)}
+                        value={genre}>
+                        </input>
+                        <br></br>
+                <button className='btn btn-success' onSubmit={onSubmit} type="submit"> Add New Show </button>
+            </form>
         </div>
     </div>
  )

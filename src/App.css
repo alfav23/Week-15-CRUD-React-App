@@ -1,21 +1,29 @@
 /* my css */
 .card {
   margin: 2rem;
+  max-width: 36rem;
+  margin: 3rem auto;
 }
 
 ul{
   list-style-type: none;
 }
 
-li {
-  color: rgb(211, 62, 62);
-}
-
 input {
-  border-radius: 5px;
+  border-radius: 8px;
+}
+
+.watchlist-form {
+  max-width: 40rem; 
+  margin: 1rem auto;
+}
+
+.show-form {
+  max-width: 40rem;
 }
 
 
+/* ------------------------------------------- */
 
 /* existing react css */
 .App {
