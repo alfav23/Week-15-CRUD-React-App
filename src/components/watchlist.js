@@ -4,6 +4,14 @@ import { ShowForm } from './showForm';
 export default function Watchlist(props) {
     const { watchlist, updateWatchlist } = props;
 
+    const deleteWatchlist = (watchlistId) => {
+        // deleting watchlist by id
+        const updatedWatchlist = {
+            watchlists: watchlist.filter((x) => x.id !== watchlistId)
+        };
+        console.log(`updated watchlist:`, watchlist)
+        updateWatchlist(updatedWatchlist);
+    }
 
     const deleteShow = (showId) => {
         // creating an updated copy of watchlist which copies watchlist object and filters out the corresponding show by id from shows property within watchlist
@@ -17,7 +25,8 @@ export default function Watchlist(props) {
 
     const addShow = (show) => {
         const updatedWatchlist = {
-            ...watchlist, shows: [...watchlist.shows, show]
+            ...watchlist, shows: [...watchlist.id.shows.push(show)]
+            // ...watchlist, shows: [...watchlist.shows, show]
         };
         console.log(`This is the updated watchlist after adding a show:`, updatedWatchlist)
         updateWatchlist(updatedWatchlist);
@@ -49,7 +58,7 @@ export default function Watchlist(props) {
         <div className='card bg-dark text-white border-secondary p-3'>
             <h6 className='text-end'>Watchlist {watchlist.id}</h6>
             <h5 className='card-title text-white'>{watchlist.listName}
-                <button className='btn btn-outline-danger ms-2'>Delete</button>
+                <button onClick={()=>deleteWatchlist} className='btn btn-outline-danger ms-2'>Delete</button>
             </h5>
             {renderShows()}
             <ShowForm addShow={addShow} updateWatchlist = {updateWatchlist} />

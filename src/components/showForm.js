@@ -8,11 +8,12 @@ export const ShowForm = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log({name})
         props.addShow({name, type, streamingService, genre});
-        // setName('');
-        // setType('');
-        // setStreamingService('');
-        // setGenre('');
+        setName('');
+        setType('');
+        setStreamingService('');
+        setGenre('');
  }
 
  return(
