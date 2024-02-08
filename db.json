@@ -4,11 +4,39 @@
       "listName": "Jordan's List",
       "shows": [
         {
-          "name": "Love is Blind",
-          "type": "Show",
+          "name": "Totally Killer",
+          "type": "Movie",
+          "streamingService": "Prime",
+          "genre": "Comedy/Thriller",
+          "id": 4965
+        },
+        {
+          "name": "Renfield",
+          "type": "Movie",
           "streamingService": "Netflix",
-          "genre": "Reality",
-          "id": 352
+          "genre": "Comedy",
+          "id": 3693
+        },
+        {
+          "name": "Locked-in",
+          "type": "Movie",
+          "streamingService": "Netflix",
+          "genre": "Drama/Suspense",
+          "id": 4850
+        },
+        {
+          "name": "American Nightmare",
+          "type": "Documentary",
+          "streamingService": "Netflix",
+          "genre": "True Crime",
+          "id": 3728
+        },
+        {
+          "name": "Saltburn",
+          "type": "Movie",
+          "streamingService": "Prime",
+          "genre": "Drama/Suspense",
+          "id": 4201
         }
       ],
       "id": 3
@@ -17,14 +45,41 @@
       "listName": "Alyssa's Watchlist",
       "shows": [
         {
-          "name": "Welcome to Samdalri",
-          "type": "",
-          "streamingService": "",
-          "genre": "",
-          "id": 914
+          "name": "Hell's Paradise",
+          "type": "Show",
+          "streamingService": "Crunchyroll",
+          "genre": "Anime",
+          "id": 594
+        },
+        {
+          "name": "Signs of Affection",
+          "type": "Show",
+          "streamingService": "Crunchyroll",
+          "genre": "Anime/Romance",
+          "id": 6174
+        },
+        {
+          "name": "American Nightmare",
+          "type": "Documentary",
+          "streamingService": "Netflix",
+          "genre": "True Crime",
+          "id": 7209
         }
       ],
       "id": 4
+    },
+    {
+      "listName": "Flavio's Watchlist",
+      "shows": [
+        {
+          "name": "Totally Killer",
+          "type": "Movie",
+          "streamingService": "Prime",
+          "genre": "Comedy/Suspense",
+          "id": 4930
+        }
+      ],
+      "id": 5
     }
   ]
 }
